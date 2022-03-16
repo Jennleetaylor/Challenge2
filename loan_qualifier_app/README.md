@@ -8,47 +8,69 @@ Enable users to save the qualifying loans as a new CSV file so that users can sh
 
 Describe the technologies required to use your project such as programming languages, libraries, frameworks, and operating systems. Be sure to include the specific versions of any critical dependencies that you have used in the stable version of your project.
 
-1. Python
-2. GitHub
-3. Terminal
-4. Fire
-5. Questionary
+1. Python -launguage
+2. GitHub - repository version control application
+3. Terminal - Command prompt
+4. Fire Module
+5. Questionary Module (prompt users for functions)
+6. CSV Module
 
----
+#Modules are a group of functions
+
 
 ## Installation Guide
 
 In this section, you should include detailed installation notes containing code blocks and screenshots.
-`pip install questionary`
 
-1. Install Libraries into Panda. PY file.
+1. Installed the Modules (Fire and Questionary) into my dev environment as they were not downloaded as modules in the base environment using the terminal. Discovered this, once trying to run the command and recieved errors when running the script, indicing the modules were missing. Downloaded modules via terminal:
+
+`$ pip install fire`
+`$ pip install questionary`
+
+
+
+    
+## Usage
+**Import Libraries/Modules into my python script:**
 
   import sys
   import fire
   import questionary
   from pathlib import Path
 
-2. From File Script - Save file type as a CSV:
+**Importing functions from files:**
   
   from qualifier.utils.fileio import load_csv, save_csv
   
-3. Install scripts used for qualifying loans
+**Import Funtions used for qualifying loans:**
 
     from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
     calculate_loan_to_value_ratio,---
 
-    
-## Usage
-
-1. From CSV File, we are filtering out the data to display in the CSV file:
+**From imput CSV File, we are filtering out the data to display in the CSV file:**
 
   from qualifier.filters.max_loan_size import filter_max_loan_size
   from qualifier.filters.credit_score import filter_credit_score
   from qualifier.filters.debt_to_income import filter_debt_to_income
   from qualifier.filters.loan_to_value import filter_loan_to_value
   
-2. Asking for the file path and CSV file to be created with the latest banking data.
+1. Import Libraries from Modules into my dev environment within Anaconda:
+
+  import sys
+  import fire
+  import questionary
+  from pathlib import Path
+
+**1. From File Script - Save file type as a CSV:**
+  
+  from qualifier.utils.fileio import load_csv, save_csv
+  
+**2. Install scripts used for qualifying loans**
+
+    from qualifier.utils.calculators import (
+    calculate_monthly_debt_ratio,
+    calculate_loan_to_value_ratio, 
 
   def load_bank_data():
     """Ask for the file path to the latest banking data and load the CSV file.
@@ -65,7 +87,7 @@ In this section, you should include detailed installation notes containing code 
     return load_csv(csvpath)
     
     
-  3. Use the applicant info function to prompt a dialog box to the user to get the applicant's financial information:
+**3. Use the applicant info function to prompt a dialog box to the user to get the applicant's financial information:**
     
     def get_applicant_info():
     """Prompt dialog to get the applicant's financial information.
@@ -88,8 +110,9 @@ In this section, you should include detailed installation notes containing code 
 
     return credit_score, debt, income, loan_amount, home_value
     
- 4. Use the qualifiying loans function to determine which loans the user qualifies for based on the loan qualificaion criteria:
-def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_value):
+ **4. Use the qualifiying loans function to determine which loans the user qualifies for based on the loan qualificaion criteria:**
+
+  def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_value):
     """Determine which loans the user qualifies for.
 
     Loan qualification criteria is based on:
@@ -109,7 +132,7 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
     Returns:
         A list of the banks willing to underwrite the loan.
 
-5. Wsing the function to calculate the monthly debt ratio and LTV ratio using values **Args**.
+**5. Using the function to calculate the monthly debt ratio and LTV ratio using values **Args**.**
 
     # Calculate the monthly debt ratio
     monthly_debt_ratio = calculate_monthly_debt_ratio(debt, income)
@@ -174,7 +197,7 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 ## Contributors
 
-Jennifer Taylor (jennleetaylor21@gmail.com
+Jennifer Taylor (jennleetaylor21@gmail.com)
 
 
 ## License
